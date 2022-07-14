@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledProfileImage = styled.div`
+export const StyledAvatar = styled.div`
   background-image: url(${(props) => props.profileImage});
   background-size: 100%;
   background-color: whitesmoke;
