@@ -1,9 +1,9 @@
-import ProfileImage from '~/features/contestant/components/profile_image/ProfileImage';
+import Avatar from '~/features/contestant/components/avatar/Avatar';
 
 import { StyledContestant } from '~/features/contestant/contestant.styled';
 
 import { IContestant } from '~/common/types/Contestant.interface';
-import ProfileScore from '~/features/contestant/components/profile_score/ProfileScore';
+import Score from '~/features/contestant/components/score/Score';
 
 interface IProps {
   contestant: IContestant;
@@ -12,9 +12,9 @@ interface IProps {
 export default function Contestant({ contestant }: IProps) {
   return (
     <StyledContestant>
-      <ProfileImage profileImageUrl={contestant.picture} />
+      <Avatar profileImageUrl={contestant.picture} />
       <div>{contestant.displayName}</div>
-      <ProfileScore score={contestant.score} />
+      <Score score={contestant.score} />
     </StyledContestant>
   );
 }
