@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledProfileScore = styled.div`
+export const StyledScore = styled.div`
   margin-left: auto;
 
   &::after {
