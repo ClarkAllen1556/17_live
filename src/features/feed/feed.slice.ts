@@ -1,22 +1,34 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { IContestant } from '~/common/types/Contestant.interface';
 import { fetchContestants } from '~/common/api/contestant.api';
 
+type TContestantMap = { [userID: string]: IContestant };
+
 interface IFeedState {
-  contestantList: IContestant[];
+  contestantMap: TContestantMap;
 }
 
 const initialState: IFeedState = {
-  contestantList: [],
+  contestantMap: {},
 };
 
 export const feedSlice = createSlice({
   name: 'feed',
   initialState,
-  reducers: {},
+  reducers: {
+    setFeed: (state, action: PayloadAction<TContestantMap>) => {
+      state.contestantMap = action.payload;
+    },
+    updateContestant: (state, action: PayloadAction<IContestant>) => {
+      state.contestantMap = {
+        ...state.contestantMap,
+        [action.payload.userID]: action.payload,
+      };
+    },
+  },
   extraReducers(builder) {
     builder.addCase(populateFeed.fulfilled, (state, action) => {
-      state.contestantList = action.payload;
+      state.contestantMap = _createContestantMap(action.payload);
     });
   },
 });
@@ -28,4 +40,11 @@ export const populateFeed = createAsyncThunk(
   }
 );
 
+export const { setFeed } = feedSlice.actions;
 export default feedSlice.reducer;
+
+function _createContestantMap(contestants: IContestant[]): TContestantMap {
+  return contestants.reduce((prev, cur) => {
+    return { ...prev, [cur.userID]: cur };
+  }, {});
+}

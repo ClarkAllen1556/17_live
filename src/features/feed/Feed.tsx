@@ -3,20 +3,24 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '~/common/hooks/store.hooks';
 
 import Contestant from '~/features/contestant/Contestant';
-import { populateFeed } from '~/features/feed/feed.slice';
+import { populateFeed, setFeed } from '~/features/feed/feed.slice';
 
 export default function Feed() {
-  const contestants = useAppSelector((state) => state.feed.contestantList);
+  const contestants = useAppSelector((state) => state.feed.contestantMap);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(populateFeed());
   }, []);
 
+  function increaseScore(index: number) {
+    // dispatch(setFeed());
+  }
+
   return (
     <>
-      {contestants.map((c) => (
-        <Contestant contestant={c} />
+      {Object.entries(contestants).map(([key, value], i) => (
+        <Contestant contestant={value} key={i} />
       ))}
     </>
   );
