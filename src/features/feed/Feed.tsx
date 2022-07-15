@@ -16,8 +16,8 @@ export default function Feed() {
     const userIds = Object.keys(contestants);
     const index = randomInteger(userIds.length);
 
-    increaseScore(contestants[userIds[index]], randomInteger(100));
-  }, 500);
+    increaseScore(contestants[userIds[index]], randomInteger(1000));
+  }, 250);
 
   useEffect(() => {
     console.log('in use effect');
