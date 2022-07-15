@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { IContestant } from '~/common/types/Contestant.interface';
+import { TContestantMap } from '~/common/types/ContestantMap.type';
 import { fetchContestants } from '~/common/api/contestant.api';
-
-type TContestantMap = { [userID: string]: IContestant };
 
 interface IFeedState {
   contestantMap: TContestantMap;
@@ -40,7 +39,7 @@ export const populateFeed = createAsyncThunk(
   }
 );
 
-export const { setFeed } = feedSlice.actions;
+export const { setFeed, updateContestant } = feedSlice.actions;
 export default feedSlice.reducer;
 
 function _createContestantMap(contestants: IContestant[]): TContestantMap {
