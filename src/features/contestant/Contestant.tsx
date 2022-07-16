@@ -5,13 +5,15 @@ import Score from '~/features/contestant/components/score/Score';
 
 interface IProps {
   contestant: IContestant;
-  position: number;
+  index: number;
 }
 
-export default function Contestant({ contestant, position }: IProps) {
+export default function Contestant({ contestant, index }: IProps) {
+  const rank = index + 1;
+
   return (
-    <StyledContestant>
-      <div>{position}</div>
+    <StyledContestant position={index}>
+      <div>{rank}</div>
       <Avatar profileImageUrl={contestant.picture} />
       <div>{contestant.displayName}</div>
       <Score score={contestant.score} />

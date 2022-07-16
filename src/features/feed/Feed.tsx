@@ -40,7 +40,7 @@ export default function Feed() {
   return (
     <>
       {Object.entries(contestants).map(([_, value], i) => (
-        <Contestant contestant={value} position={i + 1} key={i} />
+        <Contestant contestant={value} index={i} key={i} />
       ))}
     </>
   );
