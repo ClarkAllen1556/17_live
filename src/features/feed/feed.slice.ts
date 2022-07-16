@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { IContestant } from '~/common/types/Contestant.interface';
 import { TContestantMap } from '~/common/types/ContestantMap.type';
 import { fetchContestants } from '~/common/api/contestant.api';
+import { sortByScore } from '~/utils/sortContesetants';
 
 interface IFeedState {
   contestantMap: TContestantMap;
@@ -27,7 +28,7 @@ export const feedSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(populateFeed.fulfilled, (state, action) => {
-      state.contestantMap = _createContestantMap(action.payload);
+      state.contestantMap = sortByScore(_createContestantMap(action.payload));
     });
   },
 });
