@@ -42,7 +42,7 @@ export default function Feed() {
         <StyledListItem
           currentPosition={contestant.currentPosition}
           previousPosition={contestant.previousPosition}
-          key={`${contestant.userID}-${i}`}
+          key={i}
         >
           <Contestant contestant={contestant} index={i} />
         </StyledListItem>
