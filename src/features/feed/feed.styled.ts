@@ -14,7 +14,7 @@ export const StyledListItem = styled.li<{
   top: ${({ currentPosition }) => currentPosition * 48}px;
   animation: ${({ previousPosition, currentPosition }) =>
       _moveContestant(previousPosition, currentPosition)}
-    0.5s ease 0s;
+    0.3s ease 0s;
 `;
 
 const _moveContestant = (prev: number, cur: number) => keyframes`
