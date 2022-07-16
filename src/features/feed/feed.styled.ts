@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
 export const StyledOrderedList = styled.ol`
-  list-style-type: none;
+  list-style: none;
 `;
 
 export const StyledListItem = styled.li<{
@@ -14,7 +14,7 @@ export const StyledListItem = styled.li<{
   top: ${({ currentPosition }) => currentPosition * 48}px;
   animation: ${({ previousPosition, currentPosition }) =>
       _moveContestant(previousPosition, currentPosition)}
-    0.5s ease;
+    0.5s ease 0s;
 `;
 
 const _moveContestant = (prev: number, cur: number) => keyframes`
