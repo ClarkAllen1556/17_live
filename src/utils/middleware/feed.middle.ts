@@ -23,7 +23,14 @@ function _sortContestantByScore(contestantMap: TContestantMap) {
     .sort((a, b) => {
       return b.score - a.score;
     })
-    .reduce((prev, cur) => {
-      return { ...prev, [cur.userID]: cur };
+    .reduce((prev, cur, i) => {
+      return {
+        ...prev,
+        [cur.userID]: {
+          ...cur,
+          currentPosition: i,
+          previousPosition: cur.currentPosition,
+        },
+      };
     }, {});
 }
