@@ -3,4 +3,6 @@ export interface IContestant {
   displayName: string;
   picture: string;
   score: number;
+  currentPosition: number | 0;
+  previousPosition: number | 0;
 }
