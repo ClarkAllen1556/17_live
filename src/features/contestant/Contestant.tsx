@@ -17,7 +17,7 @@ export default function Contestant({ contestant, index }: IProps) {
     <StyledContestant>
       <StyledRank>{rank.current}</StyledRank>
       <Avatar profileImageUrl={contestant.picture} />
-      <div>{contestant.displayName}</div>
+      <span>{contestant.displayName}</span>
       <Score score={contestant.score} />
     </StyledContestant>
   );
