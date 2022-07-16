@@ -17,7 +17,7 @@ export default function Feed() {
     const index = randomInteger(userIds.length);
 
     increaseScore(contestants[userIds[index]], randomInteger(1000));
-  }, 250);
+  }, 500);
 
   useEffect(() => {
     dispatch(populateFeed());
